@@ -78,7 +78,7 @@ ros2 launch fluxeem_ros2_publisher launch.py
 | 依赖 | 版本 | 说明 |
 |------|------|------|
 | ROS2 | Foxy 及以上 | `rclcpp`、`sensor_msgs` |
-| OpenEB / Metavision SDK | 手动安装 | 需提供 `MetavisionSDKConfig.cmake`，可通过 `CMAKE_PREFIX_PATH` 或 `MetavisionSDK_DIR` 暴露给 CMake |
+| OpenEB | 手动安装 | [fluxeem-git/openeb at fluxeem_511](https://github.com/fluxeem-git/openeb/tree/fluxeem_511) clone对应分支的github工程，根据工程说明进行编译与安装 |
 | OpenCV | — | `fluxeem_ros2_viewer` 需要 |
 | 平台 | Ubuntu 20.04 / 22.04 LTS | x86_64 / ARM64 |
 | 编译器 | GCC 9+ / Clang 12+ | 需要 C++20 |
