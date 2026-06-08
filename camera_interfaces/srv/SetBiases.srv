@@ -1,0 +1,11 @@
+# request
+int32 bias_diff
+int32 bias_diff_on
+int32 bias_diff_off
+int32 bias_fo
+int32 bias_hpf
+int32 bias_refr
+
+---
+# response
+bool success

@@ -1,0 +1,60 @@
+fluxeem_ros2_publisher_node:
+  ros__parameters:
+    raw_file: ""                                        # if empty, the camera will be launched; otherwise events are played from this .raw file
+    identifier: "fluxeem"                               # the topic prefix, the final topic will be ${identifier}/xxx
+    publish_strategy:
+      mode: "timespan"                                  # timespan, trigger
+      trigger_polarity: 1                               # only this trigger-in polarity publishes in trigger mode
+    raw_playback:
+      interval_us: 0                                    # [us] raw input slice, 0 means using the minimum enabled module timespan
+      rate: 1.0                                         # playback speed, 1.0 means event time matches system time
+      loop: false                                       # replay the raw file from the beginning after EOF
+    
+    roi:
+      width_fraction: 1.0                               # the fraction will be used to crop the center part of the camera
+      height_fraction: 1.0
+
+    camera:
+      trail_filter_enabled: false
+      trail_filter_type: "STC_CUT_TRAIL"                # STC_CUT_TRAIL, STC_KEEP_TRAIL, TRAIL
+      trail_filter_threshold: 10                        # [ms] in the range of 1 to 100, if not, it will be changed to 50
+
+      erc_enabled: false
+      erc_rate: 45                                      # maximum event rate[Mevents/s]
+
+      bias_diff: 0                                      # [mV] in the range of -20 to 20
+      bias_diff_off: 0                                  # [mV] in the range of -30 to 200
+      bias_diff_on: 0                                   # [mV] in the range of -40 to 60
+      bias_fo: 0                                        # [mV] in the range of -20 to 0
+      bias_hpf: 0                                       # [mV] in the range of 0 to 100
+      bias_refr: 0                                      # [mV] in the range of -20 to 200
+
+    event_memory_module:
+      on_off: true
+      topic_name: "event_memory"                        # the topic name, the final topic will be ${identifier}/${topic_name}
+      timespan: 2000                                    # [us] publish interval for this module
+      spatial_sample_rate: 1.0                          # scale down factor of the spatial resolution
+      temporal_sample_rate_min: 1                       # minimum scale down factor of the temporal resolution
+      target_num_events_per_sec: 0                      # [events/s], if set to a non-zero value, then the temporal sample rate will be adjusted to keep the target number of events per second
+
+    time_surface_memory_module:
+      on_off: true
+      topic_name: "time_surface_memory"
+      timespan: 33333
+      channel: 1
+      keep_fraction: 1.0                                # the time fraction of a span to use, say a time span starts from 0 and ends at 1000, and the keep fraction is 0.3, then the events from timestamp 700 to 1000 will be used to generate the image
+
+    histogram_memory_module:
+      on_off: false
+      topic_name: "histogram_memory"
+      timespan: 33333
+      channel: 1
+      keep_fraction: 1.0
+
+    event_to_image_module:
+      on_off: false
+      topic_name: "event_frame"
+      timespan: 33333
+      image_type: "time_surface"                        # time_surface, histogram 
+      channel: 1
+      keep_fraction: 1.0

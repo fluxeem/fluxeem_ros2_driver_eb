@@ -1,0 +1,7 @@
+# request
+bool enabled
+string file_path
+
+---
+# response
+bool success

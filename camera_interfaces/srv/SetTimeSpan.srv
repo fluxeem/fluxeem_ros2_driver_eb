@@ -1,0 +1,6 @@
+# request
+int32 timespan
+
+---
+#response
+bool success

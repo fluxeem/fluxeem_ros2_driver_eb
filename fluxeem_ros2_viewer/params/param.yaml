@@ -1,0 +1,8 @@
+fluxeem_ros2_viewer_node:
+  ros__parameters:
+    identifier: "fluxeem"
+    show_histogram: false
+    show_time_surface: true
+    show_event_frame: false
+    show_event_memory: true
+    subsample_rate: 1

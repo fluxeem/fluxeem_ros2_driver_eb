@@ -1,0 +1,7 @@
+# request
+bool enabled
+uint32 rate
+
+---
+#response
+bool success

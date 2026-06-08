@@ -1,0 +1,21 @@
+# request
+
+---
+# response
+
+uint32 width
+uint32 height
+
+bool trail_filter_enabled
+string trail_filter_type
+int32 trail_filter_threshold
+
+bool erc_enabled
+int32 erc_rate
+
+int32 bias_diff
+int32 bias_diff_off
+int32 bias_diff_on
+int32 bias_fo
+int32 bias_hpf
+int32 bias_refr

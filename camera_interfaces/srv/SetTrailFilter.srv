@@ -1,0 +1,7 @@
+# request
+bool enabled
+string filter_type
+int32 threshold
+---
+# response
+bool success
